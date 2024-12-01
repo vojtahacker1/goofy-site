@@ -1,18 +1,152 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Welcome to my web!</title>
-  </head>
-  <body>
-  </body>
-  <body style="background-color:powderblue;">
-  <h1>Welcome to my goofy site</h1>
-    this is my first site !
-  <h2>list of subpages</h2>
-  <a href="https://vojtahacker1.github.io/goofy-site/goober">Goober</a>
-  <a href="https://vojtahacker1.github.io/goofy-site/main">main</a>
-  <a href="https://vojtahacker1.github.io/goofy-site/secret">Secret</a>
-  <a href="https://vojtahacker1.github.io/goofy-site/SuperSuperSecret">SuperSuperSecret</a>
-   <a href="https://vojtahacker1.github.io/goofy-site/sus">Sus</a> 
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Goofy Site</title>
+    <style>
+        /* Reset and global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1c2331;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #d1d1d1;
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #495057;
+        }
+        .info-box strong {
+            font-weight: 600;
+        }
+        .tutorial-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #495057;
+        }
+        .tutorial-box strong {
+            font-weight: 600;
+        }
+        .links-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        nav a {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #007bff;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background-color: #007bff;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Goofy Site</h1>
+        <p>Your professional hub for fun and secrets</p>
+    </header>
+    <main>
+        <div class="info-box">
+            <strong>Note:</strong> This is made for Discord.
+        </div>
+
+        <div class="tutorial-box">
+            <strong>How to Use:</strong>
+            <ol>
+                <li>Go on one of the links below.</li>
+                <li>Copy the link.</li>
+                <li>Paste it in Discord.</li>
+            </ol>
+        </div>
+
+        <div class="links-title">Links</div>
+        <nav>
+            <a href="https://vojtahacker1.github.io/goofy-site/main" target="_blank">Main</a>
+            <a href="https://vojtahacker1.github.io/goofy-site/goober" target="_blank">Goober</a>
+            <a href="https://vojtahacker1.github.io/goofy-site/secret" target="_blank">Secret</a>
+            <a href="https://vojtahacker1.github.io/goofy-site/SuperSuperSecret" target="_blank">SuperSuperSecret</a>
+            <a href="https://vojtahacker1.github.io/goofy-site/sus" target="_blank">Sus</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; 2024 Goofy Site. All rights reserved.</p>
+    </footer>
+</body>
 </html>
