@@ -1,0 +1,422 @@
+
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RJ4ST6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+
+	
+		
+			_
+		
+	
+	Useful information×
+		
+Welcome to this interactive hacker simulator. Click the icons on the right to open the programs or press the numbers on your keyboard. Drag the windows with your mouse to organize them on your desktop.
+How to avoid getting hacked?
+There are some simple things you can do to keep from getting hacked. You don’t need to be a computer expert to take some of these simple steps that could save you time, frustration, and maybe even money.
+Keep Everything Up to Date
+Maybe you ignore those popups on your computer or phone telling you there is a new update available. Keep in mind that those updates are often security enhancements. When software developers learn that hackers have learned how to get into their software, they issue a more secure update. Be sure you are using the latest by accepting those invitations to update or turn on the auto-update feature when available.
+Install Anti-Virus and Anti-Malware Software
+You might think that you don’t need special software to keep your computer and information safe, but you do. Install anti-virus and anti-malware software from a reputable company, and again, be sure to keep it updated. Also, set it to scan your computer regularly to search for any new malicious programs.
+Use Strong Passwords and Change Them Regularly
+Weak passwords make a hacker’s work easy. People often use passwords that are quickly figured out or based on the name of a pet or loved one that is easily found online. Be sure to choose something no one could guess and include upper and lower case letters, numbers, and at least one symbol. Never use the same password on more than one site. If someone gains access to your password on one site, they could access your other accounts.
+Use Two-Factor Authentication
+Two-Factor Authentication is an amazing new security feature that too many people ignore. Many banks, email providers, and other websites allow you to enable this feature to keep unauthorized users out of your accounts. When you enter your username and password, the website sends a code to your phone or email account. You then enter that code to access the site. Most sites give you the option of “remembering” the computer you use every day. But if someone tries to access your account from another computer, a stolen password will not be enough for them to hack you.
+Delete Suspicious Emails
+Reputable companies will never ask you for a password via email. Family members will rarely ask for money to be wired to an unknown location. If an email sounds strange, there is a good chance it is malicious. Go ahead and delete it. If you are not sure, contact the sender directly via phone to check it out.
+Secure Your Smartphone
+Many people dislike the inconvenience of needing to enter a pin-code or password to use their smartphone. But it is worth it. If you were to lose your phone, without a pin-code or password, the person who finds it could have access to your accounts, passwords, and even payment information.
+Interactive Programs
+The interactive programs can be opened with the icons on the right of your screen. Try to interact with these programs because most of them responds to your actions.
+Play that you mine Bitcoins, watch the surveillance camera, crack passwords, control a nuclear power plant, break into the Interpol database or find the best secret deals!
+Passive Windows
+
+Press the number buttons on your keyboard (0-9) to open the passive windows. These programs show a static or animated window on the center of your screen. You can drag them around with your mouse. Close them pressing the Space key.
+Display "Access Denied" or "Permission Granted" warnings, start a self destruction countdown, play an animated neural network tracing or a Matrix code rain. Install a virus, download confidential data, trace a computer's location with satellites, and more!
+Hacker Typer
+Minimize or close all windows and start pressing random buttons on your keyboard to simulate that you're writing program. The hacker typer will add more than one character at once to the screen to make your writing look faster.
+Open the "Remote Connection" program to simulate that you're hacking a top secret governmet server. This automated hacker typer will trigger server responses and will show various programs and warnings on the screen.
+For a more detailed instruction guide please visit HTML-Online!
+Find more online pranks at Pranx!
+		
+	
+	Main Server×
+		
+			
+				
+					Server IP address: 23.86.111.0
+					Main gvt server. WARNING: Top secret!
+				
+			
+		
+	
+	Bitcoin Miner×
+		
+			
+				
+					
+						
+							
+								128.154.26.11 Connected to btcn.miner.bitcoin-heap.htmlg.com
+								Block: ...7e9Wq#001 Diff:147M Permission granted!
+								Initialized GPU #0 - #32: [OK] (1.092Ph/s) Started @ 17:30:51
+								Overclock set to 300% | BW:[ 55/ 13/ 4Mh/kWh]  
+								Running BitCrane.exe in unsafe mode | STATUS: Miner running...
+							
+							
+								
+									Wallet
+									BTC8
+									
+									≈ $39664
+								
+							
+						
+						
+							
+								
+									
+										
+											ASICs
+											Accepted
+											Rejected
+											GH/s 5s
+										
+										
+											1
+											32535
+											357
+											340.54 Gh/s
+										
+										
+											32
+											56913
+											8762
+											34.99 Gh/s
+										
+										
+											Sum
+											8345337
+											32128
+											~156 Gh/s
+										
+									
+								
+							
+							
+								
+								
+							
+						
+						
+							
+								
+									1986.   GDRL - [17:30:51]  Resp Usrya#42 | No match Cc&75 | Diff: 50/2771987.   QWEY - [17:30:52]  Resp Mhltc_41 | No match Iv)98 | Diff: 72/8261988.   YNZI - [17:30:53]  Resp Ifmdo$77 | No match Yv!12 | Diff: 88/3121989.   EPBV - [17:30:53]  Resp Xpvuu&56 | No match Ww#36 | Diff: 08/1961990.   UEZQ - [17:30:54]  Resp Xxbvq)59 | No match Sp#56 | Diff: 22/7761991.   KZVV - [17:30:55]  Resp Lkgxc!30 | No match Ni@82 | Diff: 02/9321992.   MUHI - [17:30:55]  Resp Lkryj$56 | No match Rp^52 | Diff: 30/6801993.   RGNK - [17:30:57]  Resp Mtnco&06 | No match Xk$95 | Diff: 59/676
+								
+							
+							
+								
+									
+										Mining...
+									
+									
+										
+										
+										
+										
+										
+										
+									
+								
+							
+						
+					
+				
+			
+		
+	
+	Headquarter surveillance×
+		
+			Connecting...
+			2024-111-117:30:58
+			 
+		
+	
+	Password Cracker×
+		
+			
+				
+					CrackResetPenetrate
+				
+				
+					
+					
+					
+						
+							
+								Target:
+								23.86.111.0
+							
+							
+								Database:
+								User table / Admin role
+							
+						
+					
+				
+				
+					
+						
+							b
+							T
+							P
+							u
+							j
+							o
+							l
+							@
+							 
+							 
+							 
+							 
+							 
+							 
+							 
+						
+						
+							b
+							T
+							H
+							u
+							j
+							o
+							l
+							@
+							 
+							 
+							 
+							 
+							 
+							 
+							 
+						
+						
+							✔
+							✔
+							✔
+							✔
+							✔
+							✔
+							✔
+							✔
+							✘
+							✘
+							✘
+							✘
+							✘
+							✘
+							✘
+						
+					
+				
+				Running brute-force attack @ 23.86.111.0Please wait for the solution 
+				
+					Legal notice: Using Password Cracker™ for harmful and illegal activities is strictly prohibited and punishable by death!
+				
+			
+		
+	
+	Nuclear Plant×
+		
+			
+				
+					
+					
+					
+					
+					
+					
+				
+				
+					14.4
+					18
+					636
+					2019.5
+					1
+					70000
+					0
+					14.2
+					120
+					2572
+					0
+					1499
+					120
+					0
+					1505
+					2174
+					2174
+					220
+					223
+					0
+					931
+					604
+					45.5
+					557
+					1956
+					602.5
+					924
+					1498
+					291
+					74.5
+					0
+					46
+					565
+					1983
+					68.3
+					291
+					1494
+				
+			
+		
+	
+	Remote Connection×
+		
+			
+			
+		
+	
+	Advertisements×
+		freestar.config.enabled_slots.push({ placementName: "Pranx_hacker_300x250", slotId: "Pranx_hacker_300x250" });
+		
+			░░░▀█▀▒██▀░▀▄▀░▀█▀░░░░░▒█▒░█▄▄░▀▒▀░▒▀▒▒░░▒██▀░█▀▄░▄░▀█▀░▄▀▄▒█▀▄░█▄▄▒█▄▀░█░▒█▒░▀▄▀░█▀▄░░░░░░░▄▀░░░▄░░▄▄▒▄▄░▒▒░▒░░▄░▀▄▄░▀▄▀░█▒▀▒█░
+		
+	
+	Compiler×
+		
+			
+			
+			....Searching...Going Deeper........Searching...Waiting for response...Access Granted..Authorized...0.68993732 0.34790821 0.39229121 0.77963243 0.063534608 0.064231583 0.27757607 0.65879619 0.45579204 0.86264136 0.29955358 0.69420820 0.57286714 Waiting for response...Going Deeper....wget -a -t Data StructureAccess Granted..Encryption Unsuccesful Attempting Retry...Authorized...Authorizing tar -xzf http://zanb.se/?23&88&far=2Waiting for response...0.80510123 0.39569782 0.70562019 0.35803018 0.054785225 0.70137297 0.26720024 0.82167670 0.76873918 
+		
+	
+	Program Console×
+		
+			penetrate" == typeof $.accessRequest &&    ($.accessRqst = !0),   fun
+			
+		
+	
+	×
+		🗙 Access Denied 
+	
+	×
+		Permission Granted  
+	
+	×
+		Self Destruct593Sequence engaged
+	
+	×
+		
+	
+	×
+		
+			Neural Network Tracing
+			
+	
+		
+	
+	×
+		Compiling...
+		
+			Я卩է画ΣƬօ画ЯҜվЯ甿尺ҟէﾌᗪąƬ千卩է画ΣƬօօЯҜվЯ甿Σҟҽﾌᗪ町ժΛ甹ɾᗪΛᎶ男匚尺Ӏㄖ甶ąʝ甹Яվƒҍą甼ᎶƬɊ甿Ƨօ尺ㄩ甼ᑕᑕ町甶Ҝㄥ男ㄥЯ×ɊӨӨ甿×ą甹ㄒվᗪᗪ匚甶ﾌ乂甸ąᎶᑕㄖվɊ町ҽ甿աƬ卄ㄒҜ甾Яㄚ甾卩ƒէҽ甽卄男乂ժ卩甶ΣҟЯ町վᎶ甼Σ爪ҟ匚Yㄥ千օᗪᐯ尺卂օ丨乂ᑕㄚᐯΣ尺ҍąᗪʍ×Λﾌ千ղ卩ʍƒ爪×卄ﾌӨҍ甸ՀYɾҍᐯɾ卩匚ҽɊㄥ×ɾɾƧ尺Ҝ男甹Հվ男օ乂千甿甽丨ƒYЯղ卄ᐯօʍㄥㄥƬΣƧҜЯ卩Հʝƒ甽ժ甼ƒ甹爪ᐯҽӨҟҽY尺甿ɾ卂ɾժҟㄥㄖ甸乂ɾժɊվՀą匚×Яʍ卩ҟąﾌժㄒղЯᐯ千千画Հㄚ甿ᗪ丨甾甼ЯΣƧ卂乂男甿甿ҍㄒէ匚ƧΣҟƒ千Ҝҟᑕ丨男丨画甹Σҍաㄒ画
+		
+	
+	×
+		
+			Installing Malware
+			
+			
+		
+	
+	×
+		
+			
+		
+	
+	×
+		
+			Downloading Confidential Data
+			
+			
+		
+	
+	×
+		
+			Establishingsatellite connection
+			
+				
+					
+					
+					
+					
+					
+				
+				
+					
+					
+				
+			
+		
+	
+	
+		
+			≡ Start
+		
+	?Useful information╩Main ServerBBitcoin Miner◰Headquarter surveillance*|Password Cracker⊗Nuclear Plant╩Remote Connection$Advertisements⇔Compiler>.Program Console
+	
+		
+		
+			typer
+			simulatoru
+			simulador
+			simulador-pt
+			simulator
+			simulateur
+		
+		Hacker Simulator and Typer
+		Start typing random text on your keyboard to simulate that you're hacking a computer.
+		×All Animate Full Screen
+		Discover the programs clicking the icons on the right or press the numbers on your keyboard to show various windows.
+		
+		Read more...
+freestar.config.enabled_slots.push({ placementName: "Pranx_hacker_300x100_left", slotId: "Pranx_hacker_300x100_left" });
+		With this hacker simulator game we want to raise awareness for computer and internet security. Learn more about ethical white hat hacking here.
+		
+		
+		.
+	
+	
+	?Useful information╩Main ServerBBitcoin Miner◰Headquarter surveillance*|Password Cracker⊗Nuclear Plant╩Remote Connection$Advertisements⇔Compiler>.Program Console
+
+
+	
+
+
+	Sorry, you are using ad blocker.
+	Disable AdBlock
+	How?
+	No match
+	SUCCESS
+	Running brute-force attack
+	Please wait for the solution
+	SUCCESS: Admin password found
+	Password
+	Status: Standby
+	Start brute force attack
+	Locating
+	Tracking IP
+	Location found
+	Tracking SIM
+	Minimize
+	Maximize
+	Close
+	
+
+
+
+
