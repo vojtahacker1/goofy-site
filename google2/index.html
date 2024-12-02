@@ -36,32 +36,53 @@
 
     <script>
         const websites = [
+            // English Websites
             { title: "Google", url: "https://www.google.com", description: "Google - The world's most popular search engine.", keywords: ["search engine", "google"] },
             { title: "YouTube", url: "https://www.youtube.com", description: "YouTube - A video-sharing platform.", keywords: ["video", "youtube"] },
             { title: "Amazon", url: "https://www.amazon.com", description: "Amazon - The largest e-commerce marketplace.", keywords: ["shopping", "amazon"] },
             { title: "Wikipedia", url: "https://www.wikipedia.org", description: "Wikipedia - A free online encyclopedia.", keywords: ["encyclopedia", "wikipedia"] },
             { title: "Facebook", url: "https://www.facebook.com", description: "Facebook - A social networking site.", keywords: ["social media", "facebook"] },
-            { title: "Goofy Google", url: "https://vojtahacker1.github.io/goofy-site/google", description: "Goofy Google - A futuristic and funny take on Google's search page.", keywords: ["google", "search", "search engine"] },
-            { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging and social networking service.", keywords: ["social media", "microblogging", "twitter"] },
-            { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A photo and video-sharing social networking service.", keywords: ["social media", "photo sharing", "instagram"] },
-            { title: "LinkedIn", url: "https://www.linkedin.com", description: "LinkedIn - A professional networking platform.", keywords: ["social media", "professional", "linkedin"] },
-            { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A network of communities based on people's interests.", keywords: ["forum", "reddit", "social media"] },
-            { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A streaming service for movies and TV shows.", keywords: ["streaming", "movies", "netflix"] },
-            { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A visual discovery and bookmarking site.", keywords: ["social media", "images", "pinterest"] },
-            { title: "GitHub", url: "https://www.github.com", description: "GitHub - A platform for software developers to collaborate on code.", keywords: ["programming", "github", "software"] },
-            { title: "Slack", url: "https://www.slack.com", description: "Slack - A collaboration tool for teams.", keywords: ["communication", "teams", "slack"] },
-            { title: "Spotify", url: "https://www.spotify.com", description: "Spotify - A music streaming service.", keywords: ["music", "streaming", "spotify"] },
-            { title: "Zoom", url: "https://www.zoom.us", description: "Zoom - A video conferencing software.", keywords: ["video conferencing", "zoom"] },
-            { title: "TikTok", url: "https://www.tiktok.com", description: "TikTok - A video-sharing social networking service.", keywords: ["social media", "video", "tiktok"] },
+            { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging and social media platform.", keywords: ["social media", "twitter"] },
+            { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A photo and video sharing social platform.", keywords: ["social media", "instagram"] },
+            { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A popular streaming service for movies and TV shows.", keywords: ["streaming", "netflix"] },
+            { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A social news aggregation and discussion platform.", keywords: ["social media", "reddit"] },
+            { title: "BBC", url: "https://www.bbc.com", description: "BBC - A British public service broadcaster.", keywords: ["news", "bbc"] },
+            { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A platform for sharing ideas and inspirations.", keywords: ["social media", "pinterest"] },
+            { title: "Quora", url: "https://www.quora.com", description: "Quora - A Q&A platform for knowledge sharing.", keywords: ["Q&A", "quora"] },
             { title: "Snapchat", url: "https://www.snapchat.com", description: "Snapchat - A multimedia messaging app.", keywords: ["social media", "snapchat"] },
-            { title: "Vimeo", url: "https://www.vimeo.com", description: "Vimeo - A video hosting and sharing platform.", keywords: ["video", "vimeo"] },
-            { title: "Bing", url: "https://www.bing.com", description: "Bing - A search engine from Microsoft.", keywords: ["search engine", "bing"] },
-            { title: "Yahoo", url: "https://www.yahoo.com", description: "Yahoo - A web portal and search engine.", keywords: ["search engine", "yahoo"] },
-            { title: "DuckDuckGo", url: "https://www.duckduckgo.com", description: "DuckDuckGo - A search engine that emphasizes privacy.", keywords: ["search engine", "privacy", "duckduckgo"] },
-            { title: "Quora", url: "https://www.quora.com", description: "Quora - A Q&A platform where people ask questions.", keywords: ["questions", "answers", "quora"] },
-            { title: "Twitch", url: "https://www.twitch.tv", description: "Twitch - A live streaming platform for gamers.", keywords: ["gaming", "streaming", "twitch"] },
-            { title: "Hulu", url: "https://www.hulu.com", description: "Hulu - A streaming service for movies and TV shows.", keywords: ["streaming", "movies", "hulu"] },
-            { title: "Dropbox", url: "https://www.dropbox.com", description: "Dropbox - A cloud storage service.", keywords: ["cloud storage", "dropbox"] }
+            { title: "TikTok", url: "https://www.tiktok.com", description: "TikTok - A video-sharing app.", keywords: ["video", "tiktok"] },
+            { title: "WhatsApp", url: "https://www.whatsapp.com", description: "WhatsApp - A messaging and calling app.", keywords: ["messaging", "whatsapp"] },
+            { title: "Zoom", url: "https://www.zoom.us", description: "Zoom - A video conferencing platform.", keywords: ["video conferencing", "zoom"] },
+            { title: "Slack", url: "https://www.slack.com", description: "Slack - A collaboration hub for work.", keywords: ["collaboration", "slack"] },
+            { title: "Spotify", url: "https://www.spotify.com", description: "Spotify - A music streaming service.", keywords: ["streaming", "spotify"] },
+            { title: "Twitch", url: "https://www.twitch.tv", description: "Twitch - A live streaming platform for gamers.", keywords: ["streaming", "twitch"] },
+            { title: "Shopify", url: "https://www.shopify.com", description: "Shopify - E-commerce platform for online stores.", keywords: ["e-commerce", "shopify"] },
+            { title: "Dropbox", url: "https://www.dropbox.com", description: "Dropbox - A cloud storage service.", keywords: ["cloud", "dropbox"] },
+            { title: "GitHub", url: "https://www.github.com", description: "GitHub - A platform for version control and collaboration.", keywords: ["coding", "github"] },
+            { title: "StackOverflow", url: "https://www.stackoverflow.com", description: "StackOverflow - A platform for programmers to ask and answer questions.", keywords: ["programming", "stackoverflow"] },
+            { title: "Etsy", url: "https://www.etsy.com", description: "Etsy - A marketplace for handmade and vintage items.", keywords: ["shopping", "etsy"] },
+            { title: "New York Times", url: "https://www.nytimes.com", description: "The New York Times - A leading news source.", keywords: ["news", "nytimes"] },
+            { title: "HuffPost", url: "https://www.huffpost.com", description: "HuffPost - A news and opinion website.", keywords: ["news", "huffpost"] },
+            { title: "CNN", url: "https://www.cnn.com", description: "CNN - A leading news network.", keywords: ["news", "cnn"] },
+            { title: "NBC News", url: "https://www.nbcnews.com", description: "NBC News - A news division of the NBC television network.", keywords: ["news", "nbc"] },
+            { title: "Forbes", url: "https://www.forbes.com", description: "Forbes - A global media company focused on business, investing, and more.", keywords: ["business", "forbes"] },
+            { title: "Business Insider", url: "https://www.businessinsider.com", description: "Business Insider - Business and technology news.", keywords: ["business", "business insider"] },
+
+            // Czech Websites
+            { title: "Seznam", url: "https://www.seznam.cz", description: "Seznam - Czech search engine and web portal.", keywords: ["search engine", "seznam"] },
+            { title: "iDNES", url: "https://www.idnes.cz", description: "iDNES - Czech news website.", keywords: ["news", "idnes"] },
+            { title: "Novinky", url: "https://www.novinky.cz", description: "Novinky.cz - Czech online news portal.", keywords: ["news", "novinky"] },
+            { title: "Aktuálně", url: "https://www.aktualne.cz", description: "Aktuálně.cz - Czech news site.", keywords: ["news", "aktualne"] },
+            { title: "Czech Television", url: "https://www.ceskatelevize.cz", description: "Czech Television - Czech public television broadcaster.", keywords: ["television", "ceskatelevize"] },
+            { title: "Lidovky", url: "https://www.lidovky.cz", description: "Lidovky - Czech daily newspaper.", keywords: ["news", "lidovky"] },
+            { title: "Heureka", url: "https://www.heureka.cz", description: "Heureka - Czech price comparison website.", keywords: ["shopping", "heureka"] },
+            { title: "Alza", url: "https://www.alza.cz", description: "Alza - Popular Czech e-commerce website.", keywords: ["shopping", "alza"] },
+            { title: "Zalando", url: "https://www.zalando.cz", description: "Zalando - Czech online fashion retailer.", keywords: ["shopping", "zalando"] },
+            { title: "CZC", url: "https://www.czc.cz", description: "CZC - Czech e-commerce store specializing in electronics.", keywords: ["shopping", "czc"] },
+            { title: "Fler", url: "https://www.fler.cz", description: "Fler - Czech handmade and crafts marketplace.", keywords: ["shopping", "fler"] },
+            { title: "Panta Rhei", url: "https://www.panta-rhei.sk", description: "Panta Rhei - Czech online bookstore.", keywords: ["books", "panta rhei"] },
+            { title: "Pravda", url: "https://www.pravda.sk", description: "Pravda - Slovak daily newspaper.", keywords: ["news", "pravda"] },
+            { title: "Blesk", url: "https://www.blesk.cz", description: "Blesk - Czech tabloid newspaper.", keywords: ["news", "blesk"] }
         ];
 
         function performSearch() {
@@ -75,7 +96,7 @@
             resultsContainer.innerHTML = results.length 
                 ? results.map(site => `
                     <div class="result-item">
-                        <a href="${site.url}">${site.title}</a>
+                        <a href="${site.url}" target="_self">${site.title}</a>
                         <p class="description">${site.description}</p>
                     </div>
                 `).join('')
