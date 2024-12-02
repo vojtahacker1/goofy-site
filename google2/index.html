@@ -3,42 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Search</title>
+    <title>Custom Search</title>
     <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #0a0a0a, #111);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            text-align: center;
             color: #fff;
-            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         h1 {
-            font-size: 60px;
             color: #00f2ff;
-            text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         input[type="text"] {
-            width: 400px;
-            padding: 15px;
-            font-size: 18px;
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
             border: 2px solid #00f2ff;
-            border-radius: 25px;
-            background-color: transparent;
+            border-radius: 5px;
+            background: transparent;
             color: #fff;
             outline: none;
             margin-bottom: 20px;
@@ -47,91 +36,123 @@
         button {
             padding: 10px 20px;
             font-size: 16px;
-            border: 2px solid #00f2ff;
-            background: #111;
-            color: #fff;
-            border-radius: 25px;
+            border: none;
+            border-radius: 5px;
+            background: #00f2ff;
+            color: #111;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: background 0.3s;
         }
 
         button:hover {
-            background: #00f2ff;
-            color: #111;
-            transform: scale(1.1);
+            background: #008ecc;
         }
 
         #results {
-            margin-top: 30px;
+            margin-top: 20px;
+            max-width: 800px;
             width: 100%;
-            max-width: 600px;
-            color: #fff;
-            background: #222;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            max-height: 500px;
             overflow-y: auto;
+            border: 1px solid #333;
+            padding: 10px;
+            background: #222;
+            border-radius: 5px;
         }
 
         .result-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            background: #333;
-            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .result-item:last-child {
-            margin-bottom: 0;
+        .result-item a {
+            color: #00f2ff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .result-item a:hover {
+            text-decoration: underline;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Futuristic Search</h1>
-    <input type="text" id="searchBar" placeholder="Search the future...">
+    <h1>Custom Search</h1>
+    <input type="text" id="searchBar" placeholder="Type a keyword...">
     <button onclick="performSearch()">Search</button>
-
-    <div id="results" style="display: none;"></div>
+    <div id="results"></div>
 
     <script>
-        const data = [
-            "Artificial Intelligence",
-            "Machine Learning",
-            "Quantum Computing",
-            "Space Exploration",
-            "Virtual Reality",
-            "Blockchain Technology",
-            "Renewable Energy",
-            "Autonomous Vehicles",
-            "Genetic Engineering",
-            "Cybersecurity"
-        ];
+        // Example dataset with 5000+ sites
+        const websites = [];
+        for (let i = 1; i <= 5000; i++) {
+            websites.push({
+                title: `Site ${i}`,
+                url: `https://www.site${i}.com`,
+                description: `Description of Site ${i} - A popular website.`,
+                visits: Math.floor(Math.random() * 100000) + 1 // Random visit count
+            });
+        }
+
+        // Add priority results for "Google"
+        websites.push({
+            title: "Futuristic Google",
+            url: "https://vojtahacker1.github.io/goofy-site/google",
+            description: "Futuristic Google - A unique take on the Google search experience.",
+            visits: 500000
+        });
+        websites.push({
+            title: "Google",
+            url: "https://www.google.com",
+            description: "Google - The world's most popular search engine.",
+            visits: 1000000
+        });
 
         function performSearch() {
             const query = document.getElementById("searchBar").value.toLowerCase();
             const resultsContainer = document.getElementById("results");
+
             resultsContainer.innerHTML = ""; // Clear previous results
 
             if (!query) {
-                resultsContainer.style.display = "none";
+                resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
                 return;
             }
 
-            const filteredResults = data.filter(item =>
-                item.toLowerCase().includes(query)
-            );
+            // Filter and sort results by visit count
+            const filteredResults = websites
+                .filter(site => site.title.toLowerCase().includes(query) || site.description.toLowerCase().includes(query))
+                .sort((a, b) => b.visits - a.visits);
 
             if (filteredResults.length === 0) {
                 resultsContainer.innerHTML = "<p>No results found.</p>";
-            } else {
-                filteredResults.forEach(result => {
-                    const resultDiv = document.createElement("div");
-                    resultDiv.className = "result-item";
-                    resultDiv.textContent = result;
-                    resultsContainer.appendChild(resultDiv);
-                });
+                return;
             }
 
-            resultsContainer.style.display = "block";
+            // Display results
+            filteredResults.forEach(site => {
+                const resultItem = document.createElement("div");
+                resultItem.className = "result-item";
+
+                const link = document.createElement("a");
+                link.href = site.url;
+                link.target = "_blank"; // Open link in a new tab
+                link.textContent = site.title;
+
+                const description = document.createElement("p");
+                description.className = "description";
+                description.textContent = `${site.url}\n${site.description} (Visits: ${site.visits})`;
+
+                resultItem.appendChild(link);
+                resultItem.appendChild(description);
+                resultsContainer.appendChild(resultItem);
+            });
         }
     </script>
 </body>
