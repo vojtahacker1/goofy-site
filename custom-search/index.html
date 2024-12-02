@@ -152,7 +152,7 @@
                 if (data.items && data.items.length > 0) {
                     resultsContainer.innerHTML = data.items.map(item => `
                         <div class="result-item">
-                            <a href="${item.link}" target="_blank">${item.title}</a>
+                            <a href="${item.link}">${item.title}</a> <!-- Removed target="_blank" -->
                             <p class="description">${item.snippet}</p>
                         </div>
                     `).join('');
