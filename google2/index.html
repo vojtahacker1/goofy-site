@@ -33,24 +33,12 @@
             border-radius: 5px; 
             opacity: 0; /* Start as invisible */
             transform: translateX(100%); /* Start from the right */
-            animation: slideInFromRight 0.5s ease-out 0.3s forwards; /* Animation with delay */
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Apply smooth transition */
         }
         .loading { color: #00f2ff; text-align: center; font-size: 18px; }
         .result-item { margin-bottom: 20px; }
         .result-item a { color: #00f2ff; text-decoration: none; font-size: 18px; }
         .result-item a:hover { text-decoration: underline; }
-
-        /* Slide-in animation */
-        @keyframes slideInFromRight {
-            0% {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
     </style>
 </head>
 <body>
@@ -61,7 +49,10 @@
 
     <script>
         const websites = [
-            // Search Engines
+            // New website: Future Search
+            { title: "Future Search", url: "https://vojtahacker1.github.io/goofy-site/google", description: "Future Search - A new website with a fun twist.", keywords: ["search", "goofy", "google"] },
+
+            // Existing websites
             { title: "Google", url: "https://www.google.com", description: "Google - The world's most popular search engine.", keywords: ["search engine", "google"] },
             { title: "Bing", url: "https://www.bing.com", description: "Bing - Microsoft's search engine.", keywords: ["search engine", "bing"] },
             { title: "Yahoo", url: "https://www.yahoo.com", description: "Yahoo - Popular search engine and web portal.", keywords: ["search engine", "yahoo"] },
@@ -97,12 +88,25 @@
             { title: "CZC", url: "https://www.czc.cz", description: "CZC - Czech e-commerce store specializing in electronics.", keywords: ["shopping", "czc"] },
             { title: "Fler", url: "https://www.fler.cz", description: "Fler - Czech handmade and crafts marketplace.", keywords: ["shopping", "fler"] },
             { title: "Blesk", url: "https://www.blesk.cz", description: "Blesk - Czech tabloid newspaper.", keywords: ["news", "blesk"] },
-            { title: "Sport.cz", url: "https://www.sport.cz", description: "Sport.cz - Czech sports news site.", keywords: ["sports", "sport.cz"] }
+            { title: "Sport.cz", url: "https://www.sport.cz", description: "Sport.cz - Czech sports news site.", keywords: ["sports", "sport.cz"] },
+
+            // Additional Websites
+            { title: "BBC", url: "https://www.bbc.com", description: "BBC - A British news and entertainment website.", keywords: ["news", "bbc"] },
+            { title: "CNN", url: "https://www.cnn.com", description: "CNN - An American news website.", keywords: ["news", "cnn"] },
+            { title: "NY Times", url: "https://www.nytimes.com", description: "The New York Times - American newspaper.", keywords: ["news", "nytimes"] },
+            { title: "The Guardian", url: "https://www.theguardian.com", description: "The Guardian - British newspaper.", keywords: ["news", "the guardian"] },
+            { title: "TechCrunch", url: "https://www.techcrunch.com", description: "TechCrunch - Technology news and analysis.", keywords: ["tech", "news", "techcrunch"] },
+            { title: "Vox", url: "https://www.vox.com", description: "Vox - American news website focused on explanatory journalism.", keywords: ["news", "vox"] }
         ];
 
         function performSearch() {
             const query = document.getElementById("searchBar").value.toLowerCase();
             const resultsContainer = document.getElementById("results");
+
+            // Reset the results container for animation
+            resultsContainer.style.opacity = 0;
+            resultsContainer.style.transform = 'translateX(100%)';
+            
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
             if (!query) return resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
@@ -121,7 +125,7 @@
             setTimeout(() => {
                 resultsContainer.style.opacity = 1;
                 resultsContainer.style.transform = 'translateX(0)';
-            }, 300); // Delay the animation start
+            }, 100); // Short delay for the animation reset
         }
     </script>
 </body>
