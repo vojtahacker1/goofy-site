@@ -6,39 +6,116 @@
     <title>Custom Search</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #0a0a0a, #111);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #0d0d0d, #111);
             color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 50px;
+            height: 100vh;
+            margin: 0;
             cursor: url('https://www.pngkey.com/png/full/52-523801_computer-mouse-pointer-png-png-file-pointer-clipart.png'), auto;
         }
-        h1 { color: #00f2ff; margin-bottom: 20px; }
-        input, button { padding: 10px 20px; font-size: 16px; border-radius: 5px; margin-bottom: 20px; }
-        input { width: 300px; background: transparent; border: 2px solid #00f2ff; color: #fff; outline: none; }
-        button { background: #00f2ff; color: #111; cursor: pointer; transition: background 0.3s; }
-        button:hover { background: #008ecc; }
-        #results { 
-            margin-top: 20px; 
-            max-width: 800px; 
-            width: 100%; 
-            max-height: 500px; 
-            overflow-y: auto; 
-            border: 1px solid #333; 
-            padding: 10px; 
-            background: #222; 
-            border-radius: 5px; 
-            opacity: 0; /* Start as invisible */
-            transform: translateX(100%); /* Start from the right */
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Apply smooth transition */
+
+        h1 {
+            color: #00f2ff;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .loading { color: #00f2ff; text-align: center; font-size: 18px; }
-        .result-item { margin-bottom: 20px; }
-        .result-item a { color: #00f2ff; text-decoration: none; font-size: 18px; }
-        .result-item a:hover { text-decoration: underline; }
+
+        input, button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #00f2ff;
+        }
+
+        input {
+            width: 350px;
+            background: transparent;
+            color: #fff;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        button {
+            background: #00f2ff;
+            color: #111;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+            box-shadow: 0 8px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        button:hover {
+            background: #008ecc;
+            transform: scale(1.1);
+            box-shadow: 0 15px 25px rgba(0, 255, 255, 0.6);
+        }
+
+        #results {
+            margin-top: 30px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+
+        .loading {
+            color: #00f2ff;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .result-item {
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .result-item a {
+            color: #00f2ff;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .result-item a:hover {
+            text-decoration: underline;
+            color: #008ecc;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            input, button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -48,84 +125,50 @@
     <div id="results"></div>
 
     <script>
-        const websites = [
-            // New website: Future Search
-            { title: "Future Search", url: "https://vojtahacker1.github.io/goofy-site/google", description: "Future Search - A new website with a fun twist.", keywords: ["search", "goofy", "google"] },
+        // Your Google Custom Search API key and CSE ID
+        const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4'; // Replace with your API key
+        const CSE_ID = '84d63b08624fe419d'; // Replace with your CSE ID
 
-            // Existing websites
-            { title: "Google", url: "https://www.google.com", description: "Google - The world's most popular search engine.", keywords: ["search engine", "google"] },
-            { title: "Bing", url: "https://www.bing.com", description: "Bing - Microsoft's search engine.", keywords: ["search engine", "bing"] },
-            { title: "Yahoo", url: "https://www.yahoo.com", description: "Yahoo - Popular search engine and web portal.", keywords: ["search engine", "yahoo"] },
-            { title: "DuckDuckGo", url: "https://www.duckduckgo.com", description: "DuckDuckGo - A privacy-focused search engine.", keywords: ["privacy", "search engine", "duckduckgo"] },
-            { title: "Ask", url: "https://www.ask.com", description: "Ask - A question-answering search engine.", keywords: ["question", "ask"] },
-            { title: "Ecosia", url: "https://www.ecosia.org", description: "Ecosia - A search engine that plants trees.", keywords: ["search engine", "ecosia"] },
-            { title: "Yandex", url: "https://www.yandex.com", description: "Yandex - A Russian search engine.", keywords: ["search engine", "yandex"] },
-            { title: "Qwant", url: "https://www.qwant.com", description: "Qwant - A European privacy-focused search engine.", keywords: ["privacy", "search engine", "qwant"] },
-            { title: "StartPage", url: "https://www.startpage.com", description: "StartPage - A private search engine that uses Google results.", keywords: ["privacy", "startpage"] },
-            { title: "Swisscows", url: "https://www.swisscows.com", description: "Swisscows - A family-friendly search engine from Switzerland.", keywords: ["family", "swisscows", "search engine"] },
-            { title: "Search Encrypt", url: "https://www.searchencrypt.com", description: "Search Encrypt - A privacy-focused search engine.", keywords: ["search engine", "search encrypt"] },
-            { title: "Mojeek", url: "https://www.mojeek.com", description: "Mojeek - A search engine that does not track you.", keywords: ["search engine", "privacy", "mojeek"] },
-            { title: "Gigablast", url: "https://www.gigablast.com", description: "Gigablast - A small search engine that indexes the web.", keywords: ["search engine", "gigablast"] },
-            { title: "Dogpile", url: "https://www.dogpile.com", description: "Dogpile - A search engine that aggregates results from Google, Yahoo, and others.", keywords: ["search engine", "dogpile"] },
+        // Perform the search and fetch results from Google API
+        async function performSearch() {
+            const query = document.getElementById("searchBar").value;
 
-            // More English websites (previously included ones)
-            { title: "YouTube", url: "https://www.youtube.com", description: "YouTube - A video-sharing platform.", keywords: ["video", "youtube"] },
-            { title: "Amazon", url: "https://www.amazon.com", description: "Amazon - The largest e-commerce marketplace.", keywords: ["shopping", "amazon"] },
-            { title: "Wikipedia", url: "https://www.wikipedia.org", description: "Wikipedia - A free online encyclopedia.", keywords: ["encyclopedia", "wikipedia"] },
-            { title: "Facebook", url: "https://www.facebook.com", description: "Facebook - A social networking site.", keywords: ["social media", "facebook"] },
-            { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging and social media platform.", keywords: ["social media", "twitter"] },
-            { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A photo and video sharing social platform.", keywords: ["social media", "instagram"] },
-            { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A social news aggregation and discussion platform.", keywords: ["social media", "reddit"] },
-            { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A platform for sharing ideas and inspirations.", keywords: ["social media", "pinterest"] },
-            { title: "Quora", url: "https://www.quora.com", description: "Quora - A Q&A platform for knowledge sharing.", keywords: ["Q&A", "quora"] },
+            if (!query) {
+                return alert('Please enter a search term');
+            }
 
-            // Czech websites
-            { title: "Seznam", url: "https://www.seznam.cz", description: "Seznam - Popular Czech search engine and web portal.", keywords: ["search engine", "seznam"] },
-            { title: "iDNES", url: "https://www.idnes.cz", description: "iDNES - Czech news website.", keywords: ["news", "idnes"] },
-            { title: "Novinky", url: "https://www.novinky.cz", description: "Novinky - Czech news site offering breaking news and updates.", keywords: ["news", "novinky"] },
-            { title: "Alza", url: "https://www.alza.cz", description: "Alza - Popular Czech e-commerce website.", keywords: ["shopping", "alza"] },
-            { title: "Zalando", url: "https://www.zalando.cz", description: "Zalando - Czech online fashion retailer.", keywords: ["shopping", "zalando"] },
-            { title: "CZC", url: "https://www.czc.cz", description: "CZC - Czech e-commerce store specializing in electronics.", keywords: ["shopping", "czc"] },
-            { title: "Fler", url: "https://www.fler.cz", description: "Fler - Czech handmade and crafts marketplace.", keywords: ["shopping", "fler"] },
-            { title: "Blesk", url: "https://www.blesk.cz", description: "Blesk - Czech tabloid newspaper.", keywords: ["news", "blesk"] },
-            { title: "Sport.cz", url: "https://www.sport.cz", description: "Sport.cz - Czech sports news site.", keywords: ["sports", "sport.cz"] },
-
-            // Additional Websites
-            { title: "BBC", url: "https://www.bbc.com", description: "BBC - A British news and entertainment website.", keywords: ["news", "bbc"] },
-            { title: "CNN", url: "https://www.cnn.com", description: "CNN - An American news website.", keywords: ["news", "cnn"] },
-            { title: "NY Times", url: "https://www.nytimes.com", description: "The New York Times - American newspaper.", keywords: ["news", "nytimes"] },
-            { title: "The Guardian", url: "https://www.theguardian.com", description: "The Guardian - British newspaper.", keywords: ["news", "the guardian"] },
-            { title: "TechCrunch", url: "https://www.techcrunch.com", description: "TechCrunch - Technology news and analysis.", keywords: ["tech", "news", "techcrunch"] },
-            { title: "Vox", url: "https://www.vox.com", description: "Vox - American news website focused on explanatory journalism.", keywords: ["news", "vox"] }
-        ];
-
-        function performSearch() {
-            const query = document.getElementById("searchBar").value.toLowerCase();
             const resultsContainer = document.getElementById("results");
-
-            // Reset the results container for animation
-            resultsContainer.style.opacity = 0;
-            resultsContainer.style.transform = 'translateX(100%)';
-            
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
-            if (!query) return resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
+            try {
+                // Construct the API URL
+                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
 
-            const results = websites.filter(site => site.keywords.some(keyword => keyword.includes(query)));
-            resultsContainer.innerHTML = results.length 
-                ? results.map(site => `
-                    <div class="result-item">
-                        <a href="${site.url}" target="_self">${site.title}</a>
-                        <p class="description">${site.description}</p>
-                    </div>
-                `).join('')
-                : "<p>No results found.</p>";
+                // Fetch results from Google Custom Search API
+                const response = await fetch(url);
+                const data = await response.json();
 
-            // Trigger the animation after the results are updated
-            setTimeout(() => {
-                resultsContainer.style.opacity = 1;
-                resultsContainer.style.transform = 'translateX(0)';
-            }, 100); // Short delay for the animation reset
+                // Check if there are any results
+                if (data.items && data.items.length > 0) {
+                    resultsContainer.innerHTML = data.items.map(item => `
+                        <div class="result-item">
+                            <a href="${item.link}" target="_blank">${item.title}</a>
+                            <p class="description">${item.snippet}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    resultsContainer.innerHTML = '<p>No results found.</p>';
+                }
+
+                // Animate results into view
+                setTimeout(() => {
+                    resultsContainer.style.opacity = 1;
+                    resultsContainer.style.transform = 'translateX(0)';
+                }, 100); // Short delay for animation reset
+            } catch (error) {
+                resultsContainer.innerHTML = '<p>Error fetching results. Please try again later.</p>';
+                console.error('Error fetching search results:', error);
+            }
         }
     </script>
 </body>
