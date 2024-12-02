@@ -3,191 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Google</title>
+    <title>Custom Search</title>
     <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #0a0a0a, #111);
+            color: #fff;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-            overflow: hidden;
-            position: relative;
-            cursor: url('https://cdn.jsdelivr.net/gh/HarvardEcon/CustomCursors@latest/cursors/futuristic.cur'), auto;
-        }
-
-        /* Background Parallax Effect */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.example.com/futuristic-background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            animation: parallaxEffect 10s linear infinite;
-        }
-
-        @keyframes parallaxEffect {
-            0% { background-position: 0 0; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0 0; }
-        }
-
-        h1 {
-            font-size: 90px;
-            font-weight: 900;
-            color: #00f2ff;
-            text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, 0 0 30px #00f2ff;
-            margin-bottom: 50px;
-            animation: fadeInTitle 1.5s ease-out;
-        }
-
-        @keyframes fadeInTitle {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        input[type="text"] {
-            width: 600px;
-            padding: 20px;
-            font-size: 20px;
-            border: 2px solid #00f2ff;
-            border-radius: 50px;
-            background-color: transparent;
-            color: #fff;
-            outline: none;
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 0 0 20px rgba(0, 242, 255, 0.4);
-            transition: all 0.4s ease;
-            max-width: 100%;
-            margin-bottom: 30px;
-            animation: inputFocus 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes inputFocus {
-            0% { box-shadow: 0 0 10px rgba(0, 242, 255, 0.8); }
-            100% { box-shadow: 0 0 20px rgba(0, 242, 255, 1); }
-        }
-
-        input[type="text"]:focus {
-            border-color: #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.6);
-            width: 650px; /* Enlarge the input on focus */
-        }
-
-        .buttons {
-            display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            animation: buttonAppearing 2s ease-out;
+            padding: 20px;
+            cursor: url('https://www.pngkey.com/png/full/52-523801_computer-mouse-pointer-png-png-file-pointer-clipart.png'), auto;
         }
-
-        @keyframes buttonAppearing {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        button {
-            background: linear-gradient(145deg, #1f1f1f, #333);
-            border: 2px solid #00f2ff;
-            border-radius: 30px;
-            font-size: 18px;
-            padding: 15px 30px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            width: 220px;
-            max-width: 100%;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.5), 0 2px 6px rgba(0, 242, 255, 0.3);
-        }
-
-        /* 3D Hover Effect */
-        button:hover {
-            background: linear-gradient(145deg, #00f2ff, #00d8e6);
-            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.7), 0 6px 12px rgba(0, 242, 255, 0.4);
-            transform: translateY(-8px); /* Raising button */
-        }
-
-        button:active {
-            background: linear-gradient(145deg, #00d8e6, #00f2ff);
-            box-shadow: 0 4px 8px rgba(0, 242, 255, 0.6), 0 3px 10px rgba(0, 242, 255, 0.3);
-            transform: translateY(2px); /* Simulating a pressed effect */
-        }
-
-        button:focus {
-            outline: none;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 30px;
-            font-size: 12px;
-            color: #aaa;
-            width: 100%;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #00f2ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #ffffff;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 60px;
-            }
-
-            input[type="text"] {
-                width: 100%;
-            }
-
-            .buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            button {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-
+        h1 { color: #00f2ff; margin-bottom: 20px; }
+        input, button { padding: 10px 20px; font-size: 16px; border-radius: 5px; margin-bottom: 20px; }
+        input { width: 300px; background: transparent; border: 2px solid #00f2ff; color: #fff; outline: none; }
+        button { background: #00f2ff; color: #111; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #008ecc; }
+        #results { margin-top: 20px; max-width: 800px; width: 100%; max-height: 500px; overflow-y: auto; border: 1px solid #333; padding: 10px; background: #222; border-radius: 5px; }
+        .loading { color: #00f2ff; text-align: center; font-size: 18px; }
+        .result-item { margin-bottom: 20px; }
+        .result-item a { color: #00f2ff; text-decoration: none; font-size: 18px; }
+        .result-item a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div>
-        <h1>Futuristic Google</h1>
-        <form action="https://www.google.com/search" method="get">
-            <input type="text" name="q" placeholder="Search the future..." required>
-            <div class="buttons">
-                <button type="submit">Search</button>
-                <button type="submit" formaction="https://www.google.com/doodles">I'm Feeling Lucky</button>
-            </div>
-        </form>
-    </div>
-    <div class="footer">
-        <p>Google offered in: <a href="#">English</a></p>
-    </div>
+    <h1>Custom Search</h1>
+    <input type="text" id="searchBar" placeholder="Type a keyword...">
+    <button onclick="performSearch()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        const websites = [
+            { title: "Google", url: "https://www.google.com", description: "Google - The world's most popular search engine.", keywords: ["search engine", "google"] },
+            { title: "YouTube", url: "https://www.youtube.com", description: "YouTube - A video-sharing platform.", keywords: ["video", "youtube"] },
+            { title: "Amazon", url: "https://www.amazon.com", description: "Amazon - The largest e-commerce marketplace.", keywords: ["shopping", "amazon"] },
+            { title: "Wikipedia", url: "https://www.wikipedia.org", description: "Wikipedia - A free online encyclopedia.", keywords: ["encyclopedia", "wikipedia"] },
+            { title: "Facebook", url: "https://www.facebook.com", description: "Facebook - A social networking site.", keywords: ["social media", "facebook"] },
+            { title: "Goofy Google", url: "https://vojtahacker1.github.io/goofy-site/google", description: "Goofy Google - A futuristic and funny take on Google's search page.", keywords: ["google", "search", "search engine"] },
+            { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging and social networking service.", keywords: ["social media", "microblogging", "twitter"] },
+            { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A photo and video-sharing social networking service.", keywords: ["social media", "photo sharing", "instagram"] },
+            { title: "LinkedIn", url: "https://www.linkedin.com", description: "LinkedIn - A professional networking platform.", keywords: ["social media", "professional", "linkedin"] },
+            { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A network of communities based on people's interests.", keywords: ["forum", "reddit", "social media"] },
+            { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A streaming service for movies and TV shows.", keywords: ["streaming", "movies", "netflix"] },
+            { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A visual discovery and bookmarking site.", keywords: ["social media", "images", "pinterest"] },
+            { title: "GitHub", url: "https://www.github.com", description: "GitHub - A platform for software developers to collaborate on code.", keywords: ["programming", "github", "software"] },
+            { title: "Slack", url: "https://www.slack.com", description: "Slack - A collaboration tool for teams.", keywords: ["communication", "teams", "slack"] },
+            { title: "Spotify", url: "https://www.spotify.com", description: "Spotify - A music streaming service.", keywords: ["music", "streaming", "spotify"] },
+            { title: "Zoom", url: "https://www.zoom.us", description: "Zoom - A video conferencing software.", keywords: ["video conferencing", "zoom"] },
+            { title: "TikTok", url: "https://www.tiktok.com", description: "TikTok - A video-sharing social networking service.", keywords: ["social media", "video", "tiktok"] },
+            { title: "Snapchat", url: "https://www.snapchat.com", description: "Snapchat - A multimedia messaging app.", keywords: ["social media", "snapchat"] },
+            { title: "Vimeo", url: "https://www.vimeo.com", description: "Vimeo - A video hosting and sharing platform.", keywords: ["video", "vimeo"] },
+            { title: "Bing", url: "https://www.bing.com", description: "Bing - A search engine from Microsoft.", keywords: ["search engine", "bing"] },
+            { title: "Yahoo", url: "https://www.yahoo.com", description: "Yahoo - A web portal and search engine.", keywords: ["search engine", "yahoo"] },
+            { title: "DuckDuckGo", url: "https://www.duckduckgo.com", description: "DuckDuckGo - A search engine that emphasizes privacy.", keywords: ["search engine", "privacy", "duckduckgo"] },
+            { title: "Quora", url: "https://www.quora.com", description: "Quora - A Q&A platform where people ask questions.", keywords: ["questions", "answers", "quora"] },
+            { title: "Twitch", url: "https://www.twitch.tv", description: "Twitch - A live streaming platform for gamers.", keywords: ["gaming", "streaming", "twitch"] },
+            { title: "Hulu", url: "https://www.hulu.com", description: "Hulu - A streaming service for movies and TV shows.", keywords: ["streaming", "movies", "hulu"] },
+            { title: "Dropbox", url: "https://www.dropbox.com", description: "Dropbox - A cloud storage service.", keywords: ["cloud storage", "dropbox"] }
+        ];
+
+        function performSearch() {
+            const query = document.getElementById("searchBar").value.toLowerCase();
+            const resultsContainer = document.getElementById("results");
+            resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
+
+            if (!query) return resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
+
+            const results = websites.filter(site => site.keywords.some(keyword => keyword.includes(query)));
+            resultsContainer.innerHTML = results.length 
+                ? results.map(site => `
+                    <div class="result-item">
+                        <a href="${site.url}">${site.title}</a>
+                        <p class="description">${site.description}</p>
+                    </div>
+                `).join('')
+                : "<p>No results found.</p>";
+        }
+    </script>
 </body>
 </html>
