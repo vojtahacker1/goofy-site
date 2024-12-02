@@ -89,30 +89,35 @@
     <div id="results"></div>
 
     <script>
-        // Example dataset with 5000+ sites
-        const websites = [];
-        for (let i = 1; i <= 5000; i++) {
-            websites.push({
-                title: `Site ${i}`,
-                url: `https://www.site${i}.com`,
-                description: `Description of Site ${i} - A popular website.`,
-                visits: Math.floor(Math.random() * 100000) + 1 // Random visit count
-            });
-        }
-
-        // Add priority results for "Google"
-        websites.push({
-            title: "Futuristic Google",
-            url: "https://vojtahacker1.github.io/goofy-site/google",
-            description: "Futuristic Google - A unique take on the Google search experience.",
-            visits: 500000
-        });
-        websites.push({
-            title: "Google",
-            url: "https://www.google.com",
-            description: "Google - The world's most popular search engine.",
-            visits: 1000000
-        });
+        // Example dataset
+        const websites = [
+            // Priority websites for the "Google" keyword
+            {
+                keyword: "google",
+                priority: true,
+                data: [
+                    {
+                        title: "Futuristic Google",
+                        url: "https://vojtahacker1.github.io/goofy-site/google",
+                        description: "Futuristic Google - A unique take on the Google search experience."
+                    },
+                    {
+                        title: "Google",
+                        url: "https://www.google.com",
+                        description: "Google - The world's most popular search engine."
+                    }
+                ]
+            },
+            // General websites
+            { title: "YouTube", url: "https://www.youtube.com", description: "YouTube - A video-sharing platform with billions of videos." },
+            { title: "Gmail", url: "https://mail.google.com", description: "Gmail - Google's email service with millions of users." },
+            { title: "Facebook", url: "https://www.facebook.com", description: "Facebook - A social networking site connecting people globally." },
+            { title: "Amazon", url: "https://www.amazon.com", description: "Amazon - The largest e-commerce marketplace online." },
+            { title: "Wikipedia", url: "https://www.wikipedia.org", description: "Wikipedia - A free online encyclopedia for all topics." },
+            { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A social discussion platform for all interests." },
+            { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging platform for news and updates." },
+            { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A popular streaming service for movies and series." },
+        ];
 
         function performSearch() {
             const query = document.getElementById("searchBar").value.toLowerCase();
@@ -125,17 +130,29 @@
                 return;
             }
 
-            // Filter and sort results by visit count
-            const filteredResults = websites
-                .filter(site => site.title.toLowerCase().includes(query) || site.description.toLowerCase().includes(query))
-                .sort((a, b) => b.visits - a.visits);
+            const filteredResults = [];
+
+            // Check for priority matches first
+            websites.forEach(entry => {
+                if (entry.priority && entry.keyword === query) {
+                    filteredResults.push(...entry.data);
+                }
+            });
+
+            // If no priority matches, filter general results
+            if (filteredResults.length === 0) {
+                filteredResults.push(
+                    ...websites.filter(site =>
+                        site.title.toLowerCase().includes(query) || site.description.toLowerCase().includes(query)
+                    )
+                );
+            }
 
             if (filteredResults.length === 0) {
                 resultsContainer.innerHTML = "<p>No results found.</p>";
                 return;
             }
 
-            // Display results
             filteredResults.forEach(site => {
                 const resultItem = document.createElement("div");
                 resultItem.className = "result-item";
@@ -147,7 +164,7 @@
 
                 const description = document.createElement("p");
                 description.className = "description";
-                description.textContent = `${site.url}\n${site.description} (Visits: ${site.visits})`;
+                description.textContent = site.description;
 
                 resultItem.appendChild(link);
                 resultItem.appendChild(description);
