@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20%;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Google</h1>
+        <form action="https://www.google.com/search" method="get">
+            <input type="text" name="q" placeholder="Search Google or type a URL" required>
+            <br><br>
+            <button type="submit">Google Search</button>
+            <br><br>
+            <button type="submit" formaction="https://www.google.com/doodles">I'm Feeling Lucky</button>
+        </form>
+    </div>
+</body>
+</html>
