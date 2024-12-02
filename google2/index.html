@@ -89,7 +89,7 @@
     <div id="results"></div>
 
     <script>
-        // Example dataset
+        // Example dataset with expanded websites
         const websites = [
             // Priority websites for the "Google" keyword
             {
@@ -117,6 +117,29 @@
             { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A social discussion platform for all interests." },
             { title: "Twitter", url: "https://www.twitter.com", description: "Twitter - A microblogging platform for news and updates." },
             { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A popular streaming service for movies and series." },
+            { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A social media platform for sharing photos and videos." },
+            { title: "LinkedIn", url: "https://www.linkedin.com", description: "LinkedIn - A platform for professional networking and career development." },
+            { title: "Spotify", url: "https://www.spotify.com", description: "Spotify - A music streaming service with millions of songs." },
+            { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A platform for discovering and sharing ideas through images." },
+            { title: "TikTok", url: "https://www.tiktok.com", description: "TikTok - A short-form video app popular for trends and viral content." },
+            { title: "eBay", url: "https://www.ebay.com", description: "eBay - An online auction and shopping website." },
+            { title: "Yahoo", url: "https://www.yahoo.com", description: "Yahoo - A web portal with news, finance, and search services." },
+            { title: "Bing", url: "https://www.bing.com", description: "Bing - Microsoft's search engine offering web, video, and image searches." },
+            { title: "GitHub", url: "https://www.github.com", description: "GitHub - A platform for software development and code hosting." },
+            { title: "Stack Overflow", url: "https://www.stackoverflow.com", description: "Stack Overflow - A question and answer site for programmers." },
+            { title: "Dropbox", url: "https://www.dropbox.com", description: "Dropbox - A cloud storage service for file synchronization." },
+            { title: "Quora", url: "https://www.quora.com", description: "Quora - A question-and-answer platform where users can ask and answer questions." },
+            { title: "Slack", url: "https://www.slack.com", description: "Slack - A messaging platform for teams and workplaces." },
+            { title: "Zoom", url: "https://www.zoom.us", description: "Zoom - A video communication platform widely used for meetings and webinars." },
+            { title: "WhatsApp", url: "https://www.whatsapp.com", description: "WhatsApp - A messaging app for texts, calls, and media sharing." },
+            { title: "Discord", url: "https://www.discord.com", description: "Discord - A platform for voice, video, and text communication among gamers and communities." },
+            { title: "Hulu", url: "https://www.hulu.com", description: "Hulu - A streaming service with a wide range of TV shows and movies." },
+            { title: "Vimeo", url: "https://www.vimeo.com", description: "Vimeo - A video sharing platform known for high-quality videos." },
+            { title: "Airbnb", url: "https://www.airbnb.com", description: "Airbnb - A platform for booking short-term lodging in homes and apartments." },
+            { title: "Twitch", url: "https://www.twitch.tv", description: "Twitch - A live streaming platform for gamers and creators." },
+            { title: "Shopify", url: "https://www.shopify.com", description: "Shopify - A platform for creating online stores and e-commerce." },
+            { title: "GitLab", url: "https://www.gitlab.com", description: "GitLab - A platform for DevOps and version control of code repositories." },
+            { title: "Canva", url: "https://www.canva.com", description: "Canva - A graphic design platform for creating social media posts and more." }
         ];
 
         function performSearch() {
@@ -159,18 +182,4 @@
 
                 const link = document.createElement("a");
                 link.href = site.url;
-                link.target = "_blank"; // Open link in a new tab
-                link.textContent = site.title;
-
-                const description = document.createElement("p");
-                description.className = "description";
-                description.textContent = site.description;
-
-                resultItem.appendChild(link);
-                resultItem.appendChild(description);
-                resultsContainer.appendChild(resultItem);
-            });
-        }
-    </script>
-</body>
-</html>
+                link.target = "_blank"; // Open link in a
