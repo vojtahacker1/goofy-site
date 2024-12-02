@@ -36,7 +36,7 @@
 
     <script>
         const websites = [
-            // English Websites
+            // English websites
             { title: "Google", url: "https://www.google.com", description: "Google - The world's most popular search engine.", keywords: ["search engine", "google"] },
             { title: "YouTube", url: "https://www.youtube.com", description: "YouTube - A video-sharing platform.", keywords: ["video", "youtube"] },
             { title: "Amazon", url: "https://www.amazon.com", description: "Amazon - The largest e-commerce marketplace.", keywords: ["shopping", "amazon"] },
@@ -46,7 +46,6 @@
             { title: "Instagram", url: "https://www.instagram.com", description: "Instagram - A photo and video sharing social platform.", keywords: ["social media", "instagram"] },
             { title: "Netflix", url: "https://www.netflix.com", description: "Netflix - A popular streaming service for movies and TV shows.", keywords: ["streaming", "netflix"] },
             { title: "Reddit", url: "https://www.reddit.com", description: "Reddit - A social news aggregation and discussion platform.", keywords: ["social media", "reddit"] },
-            { title: "BBC", url: "https://www.bbc.com", description: "BBC - A British public service broadcaster.", keywords: ["news", "bbc"] },
             { title: "Pinterest", url: "https://www.pinterest.com", description: "Pinterest - A platform for sharing ideas and inspirations.", keywords: ["social media", "pinterest"] },
             { title: "Quora", url: "https://www.quora.com", description: "Quora - A Q&A platform for knowledge sharing.", keywords: ["Q&A", "quora"] },
             { title: "Snapchat", url: "https://www.snapchat.com", description: "Snapchat - A multimedia messaging app.", keywords: ["social media", "snapchat"] },
@@ -61,28 +60,29 @@
             { title: "GitHub", url: "https://www.github.com", description: "GitHub - A platform for version control and collaboration.", keywords: ["coding", "github"] },
             { title: "StackOverflow", url: "https://www.stackoverflow.com", description: "StackOverflow - A platform for programmers to ask and answer questions.", keywords: ["programming", "stackoverflow"] },
             { title: "Etsy", url: "https://www.etsy.com", description: "Etsy - A marketplace for handmade and vintage items.", keywords: ["shopping", "etsy"] },
-            { title: "New York Times", url: "https://www.nytimes.com", description: "The New York Times - A leading news source.", keywords: ["news", "nytimes"] },
-            { title: "HuffPost", url: "https://www.huffpost.com", description: "HuffPost - A news and opinion website.", keywords: ["news", "huffpost"] },
-            { title: "CNN", url: "https://www.cnn.com", description: "CNN - A leading news network.", keywords: ["news", "cnn"] },
-            { title: "NBC News", url: "https://www.nbcnews.com", description: "NBC News - A news division of the NBC television network.", keywords: ["news", "nbc"] },
-            { title: "Forbes", url: "https://www.forbes.com", description: "Forbes - A global media company focused on business, investing, and more.", keywords: ["business", "forbes"] },
-            { title: "Business Insider", url: "https://www.businessinsider.com", description: "Business Insider - Business and technology news.", keywords: ["business", "business insider"] },
 
-            // Czech Websites
-            { title: "Seznam", url: "https://www.seznam.cz", description: "Seznam - Czech search engine and web portal.", keywords: ["search engine", "seznam"] },
+            // Czech websites
+            { title: "Seznam", url: "https://www.seznam.cz", description: "Seznam - Popular Czech search engine and web portal.", keywords: ["search engine", "seznam"] },
             { title: "iDNES", url: "https://www.idnes.cz", description: "iDNES - Czech news website.", keywords: ["news", "idnes"] },
-            { title: "Novinky", url: "https://www.novinky.cz", description: "Novinky.cz - Czech online news portal.", keywords: ["news", "novinky"] },
-            { title: "Aktuálně", url: "https://www.aktualne.cz", description: "Aktuálně.cz - Czech news site.", keywords: ["news", "aktualne"] },
-            { title: "Czech Television", url: "https://www.ceskatelevize.cz", description: "Czech Television - Czech public television broadcaster.", keywords: ["television", "ceskatelevize"] },
-            { title: "Lidovky", url: "https://www.lidovky.cz", description: "Lidovky - Czech daily newspaper.", keywords: ["news", "lidovky"] },
-            { title: "Heureka", url: "https://www.heureka.cz", description: "Heureka - Czech price comparison website.", keywords: ["shopping", "heureka"] },
+            { title: "Novinky", url: "https://www.novinky.cz", description: "Novinky - Czech news site offering breaking news and updates.", keywords: ["news", "novinky"] },
             { title: "Alza", url: "https://www.alza.cz", description: "Alza - Popular Czech e-commerce website.", keywords: ["shopping", "alza"] },
             { title: "Zalando", url: "https://www.zalando.cz", description: "Zalando - Czech online fashion retailer.", keywords: ["shopping", "zalando"] },
             { title: "CZC", url: "https://www.czc.cz", description: "CZC - Czech e-commerce store specializing in electronics.", keywords: ["shopping", "czc"] },
             { title: "Fler", url: "https://www.fler.cz", description: "Fler - Czech handmade and crafts marketplace.", keywords: ["shopping", "fler"] },
             { title: "Panta Rhei", url: "https://www.panta-rhei.sk", description: "Panta Rhei - Czech online bookstore.", keywords: ["books", "panta rhei"] },
-            { title: "Pravda", url: "https://www.pravda.sk", description: "Pravda - Slovak daily newspaper.", keywords: ["news", "pravda"] },
-            { title: "Blesk", url: "https://www.blesk.cz", description: "Blesk - Czech tabloid newspaper.", keywords: ["news", "blesk"] }
+            { title: "Blesk", url: "https://www.blesk.cz", description: "Blesk - Czech tabloid newspaper.", keywords: ["news", "blesk"] },
+            { title: "Sport.cz", url: "https://www.sport.cz", description: "Sport.cz - Czech sports news site.", keywords: ["sports", "sport.cz"] },
+            { title: "ČT24", url: "https://www.ct24.cz", description: "ČT24 - Czech news channel by Česká Televize.", keywords: ["news", "ct24"] },
+            { title: "Heureka", url: "https://www.heureka.cz", description: "Heureka - Czech price comparison website.", keywords: ["shopping", "heureka"] },
+            { title: "Česká pošta", url: "https://www.ceskaposta.cz", description: "Česká pošta - Czech national postal service.", keywords: ["postal service", "ceskaposta"] },
+            { title: "Slevomat", url: "https://www.slevomat.cz", description: "Slevomat - Czech deal and coupon website.", keywords: ["deals", "slevomat"] },
+            { title: "Přehledně", url: "https://www.prehledne.cz", description: "Přehledně - Czech comparison website for insurance and finance.", keywords: ["comparison", "prehledne"] },
+            { title: "Lidl Česko", url: "https://www.lidl.cz", description: "Lidl Czech Republic - Online store for Lidl products.", keywords: ["shopping", "lidl"] },
+
+            // Adding more Czech sites
+            { title: "Tiscali", url: "https://www.tiscali.cz", description: "Tiscali - Czech internet service provider.", keywords: ["internet", "tiscali"] },
+            { title: "Kreativne.cz", url: "https://www.kreativne.cz", description: "Kreativne - Czech creative inspiration site.", keywords: ["design", "kreativne"] },
+            { title: "CzechCrunch", url: "https://www.czechcrunch.cz", description: "CzechCrunch - Czech startup and technology blog.", keywords: ["tech", "czechcrunch"] }
         ];
 
         function performSearch() {
