@@ -184,7 +184,7 @@
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
             try {
-                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
+                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=image&filter=1`;  // Image search added
 
                 const response = await fetch(url);
                 const data = await response.json();
@@ -194,10 +194,26 @@
                         <div class="result-item">
                             <a href="${item.link}">${item.title}</a>
                             <p class="description">${item.snippet}</p>
+                            <img src="${item.pagemap.cse_image[0].src}" alt="${item.title}" style="max-width: 100%; height: auto; margin-top: 10px;">
                         </div>
                     `).join('');
                 } else {
                     resultsContainer.innerHTML = '<p>No results found.</p>';
+                }
+
+                // Repeating for news search
+                const newsUrl = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=news&filter=1`;  // News search added
+
+                const newsResponse = await fetch(newsUrl);
+                const newsData = await newsResponse.json();
+
+                if (newsData.items && newsData.items.length > 0) {
+                    resultsContainer.innerHTML += newsData.items.map(item => `
+                        <div class="result-item">
+                            <a href="${item.link}">${item.title}</a>
+                            <p class="description">${item.snippet}</p>
+                        </div>
+                    `).join('');
                 }
 
                 setTimeout(() => {
