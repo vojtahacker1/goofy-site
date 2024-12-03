@@ -50,7 +50,7 @@
             }
         }
 
-        input, button {
+        input, button, select {
             padding: 15px 25px;
             font-size: 18px;
             border-radius: 10px;
@@ -130,8 +130,14 @@
             margin-top: 5px;
         }
 
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
         @media (max-width: 600px) {
-            input, button {
+            input, button, select {
                 width: 100%;
                 padding: 12px 20px;
                 font-size: 16px;
@@ -164,6 +170,11 @@
 <body>
     <h1>Custom Search</h1>
     <input type="text" id="searchBar" placeholder="Type a keyword...">
+    <select id="searchType" onchange="performSearch()">
+        <option value="web">Web</option>
+        <option value="image">Image</option>
+        <option value="news">News</option>
+    </select>
     <button onclick="performSearch()">Search</button>
     <div id="results"></div>
 
@@ -175,6 +186,8 @@
 
         async function performSearch() {
             const query = document.getElementById("searchBar").value;
+            const searchType = document.getElementById("searchType").value;
+            let url = '';
 
             if (!query) {
                 return alert('Please enter a search term');
@@ -184,36 +197,48 @@
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
             try {
-                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=image&filter=1`;  // Image search added
+                if (searchType === 'image') {
+                    url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=image&filter=1`;
+                } else if (searchType === 'news') {
+                    url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=news&filter=1`;
+                } else {
+                    url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
+                }
 
                 const response = await fetch(url);
                 const data = await response.json();
 
+                // Log the API response for debugging
+                console.log('API Response:', data);
+
                 if (data.items && data.items.length > 0) {
-                    resultsContainer.innerHTML = data.items.map(item => `
-                        <div class="result-item">
-                            <a href="${item.link}">${item.title}</a>
-                            <p class="description">${item.snippet}</p>
-                            <img src="${item.pagemap.cse_image[0].src}" alt="${item.title}" style="max-width: 100%; height: auto; margin-top: 10px;">
-                        </div>
-                    `).join('');
+                    resultsContainer.innerHTML = data.items.map(item => {
+                        if (searchType === 'image' && item.pagemap && item.pagemap.cse_image) {
+                            return `
+                                <div class="result-item">
+                                    <a href="${item.link}">${item.title}</a>
+                                    <p class="description">${item.snippet}</p>
+                                    <img src="${item.pagemap.cse_image[0].src}" alt="${item.title}" class="image-preview">
+                                </div>
+                            `;
+                        } else if (searchType === 'news') {
+                            return `
+                                <div class="result-item">
+                                    <a href="${item.link}">${item.title}</a>
+                                    <p class="description">${item.snippet}</p>
+                                </div>
+                            `;
+                        } else {
+                            return `
+                                <div class="result-item">
+                                    <a href="${item.link}">${item.title}</a>
+                                    <p class="description">${item.snippet}</p>
+                                </div>
+                            `;
+                        }
+                    }).join('');
                 } else {
                     resultsContainer.innerHTML = '<p>No results found.</p>';
-                }
-
-                // Repeating for news search
-                const newsUrl = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}&searchType=news&filter=1`;  // News search added
-
-                const newsResponse = await fetch(newsUrl);
-                const newsData = await newsResponse.json();
-
-                if (newsData.items && newsData.items.length > 0) {
-                    resultsContainer.innerHTML += newsData.items.map(item => `
-                        <div class="result-item">
-                            <a href="${item.link}">${item.title}</a>
-                            <p class="description">${item.snippet}</p>
-                        </div>
-                    `).join('');
                 }
 
                 setTimeout(() => {
