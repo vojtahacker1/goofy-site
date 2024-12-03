@@ -20,6 +20,7 @@
             overflow: hidden;
             position: relative;
             text-align: center;
+            transition: background 0.3s, color 0.3s; /* Smooth theme transition */
         }
 
         /* Light theme styles */
@@ -51,7 +52,7 @@
         }
 
         /* Center content properly with flex */
-        input, button {
+        input, button, select {
             padding: 15px 30px;
             font-size: 18px;
             border-radius: 10px;
@@ -60,39 +61,64 @@
             outline: none;
             width: 350px;
             text-align: center;
-        }
-
-        input {
             background: transparent;
             color: #e0e0e0;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease-in-out;
         }
 
-        input.light-theme {
+        input.light-theme, select.light-theme {
             color: #202124;
         }
 
-        input::placeholder {
+        input::placeholder, select {
             color: #aaa;
+        }
+
+        /* Futuristic Dropdown */
+        select {
+            background: transparent;
+            border: 2px solid #00e0ff;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #00b8d4;
+            box-shadow: 0 0 15px rgba(0, 184, 212, 0.8);
+        }
+
+        select.light-theme {
+            border-color: #202124;
+            color: #202124;
+        }
+
+        select.light-theme:focus {
+            border-color: #202124;
+            box-shadow: 0 0 15px rgba(32, 33, 36, 0.8);
         }
 
         /* Button Styling */
         button {
             background: #00e0ff;
-            color: #fff; /* White text in dark theme */
+            color: #121212; /* Dark text in dark theme */
             border: none;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
             text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
         /* Light Theme Button */
         body.light-theme button {
             background: #202124;
-            color: #fff; /* White text in light theme for better visibility */
+            color: #fff;
         }
 
         button:hover {
             background: #00b8d4;
+            box-shadow: 0 0 20px rgba(0, 184, 212, 0.8);
         }
 
         .theme-switch {
@@ -214,9 +240,12 @@
     <div id="results"></div>
 
     <script>
-        // Your API Key and CSE ID
-        const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4';
-        const CSE_ID = '84d63b08624fe419d';
+        // Arrays of API Keys and CSE IDs, each pair is a matching set
+        const API_CSE_PAIRS = [
+            { apiKey: 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4', cseId: '84d63b08624fe419d' },
+            { apiKey: 'AIzaSyChwIVUmzhhnkP_Ut0xQyRvhHkLtMYbyyc', cseId: 'f3d0ff734a1e84bc7' },  // Replace with actual key and ID
+            { apiKey: 'AIzaSyAKfhY8WEQEFL6R4JuXHwM4MXWSDJQRS2U', cseId: 'e023febf3db504733' }   // Replace with actual key and ID
+        ];
 
         // Function to toggle between light and dark theme
         function toggleTheme() {
@@ -239,6 +268,12 @@
             });
         }
 
+        // Function to select a random API key and CSE ID pair
+        function getRandomAPIConfig() {
+            const randomPair = API_CSE_PAIRS[Math.floor(Math.random() * API_CSE_PAIRS.length)];
+            return randomPair;
+        }
+
         async function performSearch() {
             const query = document.getElementById("searchBar").value;
             const category = document.getElementById("searchCategory").value;
@@ -250,12 +285,16 @@
             const resultsContainer = document.getElementById("results");
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
-            let url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
+            // Get random API key and CSE ID
+            const { apiKey, cseId } = getRandomAPIConfig();
 
+            let url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${cseId}`;
+
+            // Modify URL for category-based search
             if (category === 'image') {
-                url += '&searchType=image';  // Image search
+                url += '&searchType=image';
             } else if (category === 'news') {
-                url += '&searchType=news';  // News search
+                url += '&searchType=news';
             }
 
             try {
@@ -263,17 +302,14 @@
                 const data = await response.json();
 
                 if (data.items && data.items.length > 0) {
-                    resultsContainer.innerHTML = data.items.map(item => {
-                        const imagePreview = category === 'image' && item.pagemap && item.pagemap.cse_image ? `<img class="image-preview" src="${item.pagemap.cse_image[0].src}" alt="Image preview">` : '';
-                        return `
-                            <div class="result-item">
-                                <a href="${item.link}" target="_blank">${item.title}</a>
-                                <p class="url">${item.link}</p>
-                                <p class="description">${item.snippet}</p>
-                                ${imagePreview}
-                            </div>
-                        `;
-                    }).join('');
+                    resultsContainer.innerHTML = data.items.map(item => `
+                        <div class="result-item">
+                            <a href="${item.link}" target="_blank">${item.title}</a>
+                            <p class="url">${item.link}</p>
+                            <p class="description">${item.snippet}</p>
+                            ${category === 'image' && item.pagemap && item.pagemap.cse_image ? `<img class="image-preview" src="${item.pagemap.cse_image[0].src}" alt="Image preview">` : ''}
+                        </div>
+                    `).join('');
                 } else {
                     resultsContainer.innerHTML = '<p>No results found.</p>';
                 }
