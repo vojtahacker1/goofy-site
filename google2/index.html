@@ -139,6 +139,33 @@
                 font-size: 2rem;
             }
         }
+
+        body {
+            cursor: none;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #00f2ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+            animation: cursorGlow 1s infinite alternate;
+        }
+
+        @keyframes cursorGlow {
+            0% {
+                box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+            }
+            100% {
+                box-shadow: 0 0 20px #00f2ff, 0 0 30px #00f2ff, 0 0 40px #00f2ff;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -146,6 +173,8 @@
     <input type="text" id="searchBar" placeholder="Type a keyword...">
     <button onclick="performSearch()">Search</button>
     <div id="results"></div>
+
+    <div class="custom-cursor" id="customCursor"></div>
 
     <script>
         const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4';
@@ -187,6 +216,12 @@
                 console.error('Error fetching search results:', error);
             }
         }
+
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('customCursor');
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
     </script>
 </body>
 </html>
