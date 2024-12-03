@@ -25,32 +25,10 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(-100px);
             animation: slideInFromTop 1s forwards, glow 1.5s ease-in-out infinite alternate;
         }
 
-        @keyframes slideInFromTop {
-            0% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
-            }
-            100% {
-                text-shadow: 0 0 20px #00f2ff, 0 0 30px #00f2ff, 0 0 40px #00f2ff;
-            }
-        }
-
-        input, button {
+        input, button, select {
             padding: 15px 25px;
             font-size: 18px;
             border-radius: 10px;
@@ -83,6 +61,12 @@
             background: #008ecc;
             transform: scale(1.1);
             box-shadow: 0 15px 25px rgba(0, 255, 255, 0.6);
+        }
+
+        select {
+            background: #222;
+            color: #fff;
+            width: 200px;
         }
 
         #results {
@@ -129,70 +113,19 @@
             color: #ccc;
             margin-top: 5px;
         }
-
-        @media (max-width: 600px) {
-            input, button {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background-color: #00f2ff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, 0 0 30px #00f2ff;
-            animation: cursorGlow 1s infinite alternate, cursorTrail 1s ease-out;
-        }
-
-        @keyframes cursorGlow {
-            0% {
-                box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, 0 0 30px #00f2ff;
-            }
-            100% {
-                box-shadow: 0 0 20px #00f2ff, 0 0 40px #00f2ff, 0 0 50px #00f2ff;
-            }
-        }
-
-        .trail {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #00f2ff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 999;
-            opacity: 1;
-            animation: trailEffect 1s forwards;
-        }
-
-        @keyframes trailEffect {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-        }
     </style>
 </head>
 <body>
     <h1>Custom Search</h1>
     <input type="text" id="searchBar" placeholder="Type a keyword...">
+    <select id="searchType">
+        <option value="web">Web</option>
+        <option value="image">Images</option>
+        <option value="video">Videos</option>
+        <option value="news">News</option>
+    </select>
     <button onclick="performSearch()">Search</button>
     <div id="results"></div>
-
-    <div class="custom-cursor" id="customCursor"></div>
 
     <script>
         const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4';
@@ -200,17 +133,26 @@
 
         async function performSearch() {
             const query = document.getElementById("searchBar").value;
+            const searchType = document.getElementById("searchType").value;
+            const resultsContainer = document.getElementById("results");
 
             if (!query) {
                 return alert('Please enter a search term');
             }
 
-            const resultsContainer = document.getElementById("results");
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
-            try {
-                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
+            let searchTypeParam = '';
+            if (searchType === 'image') {
+                searchTypeParam = '&searchType=image';
+            } else if (searchType === 'video') {
+                searchTypeParam = '&fileType=mp4';
+            } else if (searchType === 'news') {
+                searchTypeParam = '&sort=date';
+            }
 
+            try {
+                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}${searchTypeParam}`;
                 const response = await fetch(url);
                 const data = await response.json();
 
@@ -234,22 +176,6 @@
                 console.error('Error fetching search results:', error);
             }
         }
-
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.getElementById('customCursor');
-            cursor.style.left = `${e.pageX}px`;
-            cursor.style.top = `${e.pageY}px`;
-
-            const trail = document.createElement('div');
-            trail.classList.add('trail');
-            document.body.appendChild(trail);
-            trail.style.left = `${e.pageX - 7}px`;
-            trail.style.top = `${e.pageY - 7}px`;
-
-            setTimeout(() => {
-                trail.remove();
-            }, 1000);
-        });
     </script>
 </body>
 </html>
