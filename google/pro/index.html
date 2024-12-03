@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Search</title>
+    <title>Future Search</title>
     <style>
         /* Default Dark Theme */
         body {
@@ -98,7 +98,7 @@
         .theme-switch {
             margin-bottom: 20px;
             font-size: 18px;
-            color: #00e0ff;
+            color: #fff; /* Ensure text color is white in dark mode */
             cursor: pointer;
             transition: color 0.3s ease;
         }
@@ -202,9 +202,14 @@
     </style>
 </head>
 <body>
-    <h1>Custom Search</h1>
+    <h1>Future Search</h1>
     <button class="theme-switch" onclick="toggleTheme()">Switch to Light Mode</button>
     <input type="text" id="searchBar" placeholder="Type a keyword...">
+    <select id="searchCategory" style="margin-bottom: 20px; padding: 10px; font-size: 16px;">
+        <option value="web">Web</option>
+        <option value="image">Images</option>
+        <option value="news">News</option>
+    </select>
     <button onclick="performSearch()">Search</button>
     <div id="results"></div>
 
@@ -236,6 +241,7 @@
 
         async function performSearch() {
             const query = document.getElementById("searchBar").value;
+            const category = document.getElementById("searchCategory").value;
 
             if (!query) {
                 return alert('Please enter a search term');
@@ -244,21 +250,30 @@
             const resultsContainer = document.getElementById("results");
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
-            try {
-                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
+            let url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
 
+            if (category === 'image') {
+                url += '&searchType=image';  // Image search
+            } else if (category === 'news') {
+                url += '&searchType=news';  // News search
+            }
+
+            try {
                 const response = await fetch(url);
                 const data = await response.json();
 
                 if (data.items && data.items.length > 0) {
-                    resultsContainer.innerHTML = data.items.map(item => `
-                        <div class="result-item">
-                            <a href="${item.link}" target="_blank">${item.title}</a>
-                            <p class="url">${item.link}</p>
-                            <p class="description">${item.snippet}</p>
-                            ${item.pagemap && item.pagemap.cse_image ? `<img class="image-preview" src="${item.pagemap.cse_image[0].src}" alt="Image preview">` : ''}
-                        </div>
-                    `).join('');
+                    resultsContainer.innerHTML = data.items.map(item => {
+                        const imagePreview = category === 'image' && item.pagemap && item.pagemap.cse_image ? `<img class="image-preview" src="${item.pagemap.cse_image[0].src}" alt="Image preview">` : '';
+                        return `
+                            <div class="result-item">
+                                <a href="${item.link}" target="_blank">${item.title}</a>
+                                <p class="url">${item.link}</p>
+                                <p class="description">${item.snippet}</p>
+                                ${imagePreview}
+                            </div>
+                        `;
+                    }).join('');
                 } else {
                     resultsContainer.innerHTML = '<p>No results found.</p>';
                 }
