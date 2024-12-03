@@ -25,6 +25,20 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(-100px);
+            animation: slideInFromTop 1s forwards;
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         input, button {
@@ -125,11 +139,9 @@
     <div id="results"></div>
 
     <script>
-        // Your Google Custom Search API key and CSE ID
-        const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4'; // Replace with your API key
-        const CSE_ID = '84d63b08624fe419d'; // Replace with your CSE ID
+        const API_KEY = 'AIzaSyDWNsfBSjfD7a9fnroxndZgA2XjnU_Zpe4';
+        const CSE_ID = '84d63b08624fe419d';
 
-        // Perform the search and fetch results from Google API
         async function performSearch() {
             const query = document.getElementById("searchBar").value;
 
@@ -141,18 +153,15 @@
             resultsContainer.innerHTML = '<div class="loading">Loading results...</div>';
 
             try {
-                // Construct the API URL
                 const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${CSE_ID}`;
 
-                // Fetch results from Google Custom Search API
                 const response = await fetch(url);
                 const data = await response.json();
 
-                // Check if there are any results
                 if (data.items && data.items.length > 0) {
                     resultsContainer.innerHTML = data.items.map(item => `
                         <div class="result-item">
-                            <a href="${item.link}" target="_blank">${item.title}</a>
+                            <a href="${item.link}">${item.title}</a>
                             <p class="description">${item.snippet}</p>
                         </div>
                     `).join('');
@@ -160,11 +169,10 @@
                     resultsContainer.innerHTML = '<p>No results found.</p>';
                 }
 
-                // Animate results into view
                 setTimeout(() => {
                     resultsContainer.style.opacity = 1;
                     resultsContainer.style.transform = 'translateX(0)';
-                }, 100); // Short delay for animation reset
+                }, 100);
             } catch (error) {
                 resultsContainer.innerHTML = '<p>Error fetching results. Please try again later.</p>';
                 console.error('Error fetching search results:', error);
