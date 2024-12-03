@@ -142,10 +142,10 @@
 
         .custom-cursor {
             position: fixed;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background-color: #00f2ff;
-            border-radius: 50%;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 0); /* Creating the cursor shape */
             pointer-events: none;
             z-index: 1000;
             transform: translate(-50%, -50%);
@@ -161,7 +161,6 @@
                 box-shadow: 0 0 20px #00f2ff, 0 0 30px #00f2ff, 0 0 40px #00f2ff;
             }
         }
-
     </style>
 </head>
 <body>
