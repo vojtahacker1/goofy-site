@@ -27,7 +27,7 @@
             letter-spacing: 2px;
             opacity: 0;
             transform: translateY(-100px);
-            animation: slideInFromTop 1s forwards;
+            animation: slideInFromTop 1s forwards, glow 1.5s ease-in-out infinite alternate;
         }
 
         @keyframes slideInFromTop {
@@ -38,6 +38,15 @@
             100% {
                 transform: translateY(0);
                 opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff;
+            }
+            100% {
+                text-shadow: 0 0 20px #00f2ff, 0 0 30px #00f2ff, 0 0 40px #00f2ff;
             }
         }
 
